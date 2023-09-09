@@ -9,16 +9,15 @@ return require('packer').startup(function(use)
 -----------------------------------------------------------
 	use 'Mofiqul/vscode.nvim'
 	--- Информационная строка внизу
-	use { 'nvim-lualine/lualine.nvim',
-	requires = {'kyazdani42/nvim-web-devicons', opt = true},
-	config = function()
-	require('lualine').setup()
-	end, }
+	use({
+		'nvim-lualine/lualine.nvim',
+		requires = {
+			'kyazdani42/nvim-web-devicons', opt = true
+		},
+	})  
 	-- Табы вверху
-	use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons',
-	config = function()
-		require("bufferline").setup{}
-	end, }
+	use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+
 -----------------------------------------------------------
 -- НАВИГАЦИЯ
 -----------------------------------------------------------
@@ -29,18 +28,12 @@ return require('packer').startup(function(use)
 		requires = {
 			"nvim-tree/nvim-web-devicons", -- optional, for file icons
 		},
-		config = function()
-			require("nvim-tree").setup()
-		end, 
 	})
 	use({
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
 		-- or                            , tag = '0.1.0',
 		requires = { { "nvim-lua/plenary.nvim" } },
-		config = function()
-			require("telescope").setup()
-		end, 
 	})
 
 -----------------------------------------------------------
@@ -75,5 +68,16 @@ return require('packer').startup(function(use)
 			{ "L3MON4D3/LuaSnip" },
 		},
 	})
+
+-----------------------------------------------------------
+-- Utilities
+-----------------------------------------------------------
+ use({
+  "kdheepak/lazygit.nvim",
+  -- optional for floating window border decoration
+  requires = {
+    "nvim-lua/plenary.nvim",
+  },
+})
 
 end)
