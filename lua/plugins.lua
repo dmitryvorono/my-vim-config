@@ -35,6 +35,8 @@ return require('packer').startup(function(use)
 		-- or                            , tag = '0.1.0',
 		requires = { { "nvim-lua/plenary.nvim" } },
 	})
+	-- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
+	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make", cond = vim.fn.executable("make") == 1 })
 
 -----------------------------------------------------------
 -- LSP и автодополнялка
@@ -72,12 +74,13 @@ return require('packer').startup(function(use)
 -----------------------------------------------------------
 -- Utilities
 -----------------------------------------------------------
- use({
-  "kdheepak/lazygit.nvim",
-  -- optional for floating window border decoration
-  requires = {
-    "nvim-lua/plenary.nvim",
-  },
-})
+  use({
+    "kdheepak/lazygit.nvim",
+    -- optional for floating window border decoration
+    requires = {
+      "nvim-lua/plenary.nvim",
+    },
+  })
+  use("windwp/nvim-autopairs")
 
 end)
