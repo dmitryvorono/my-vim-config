@@ -1,26 +1,27 @@
 -- Only required if you have packer configured as `opt`
-vim.cmd [[packadd packer.nvim]]
+vim.cmd([[packadd packer.nvim]])
 
-return require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
------------------------------------------------------------
--- ПЛАГИНЫ ВНЕШНЕГО ВИДА
------------------------------------------------------------
-	use 'Mofiqul/vscode.nvim'
+return require("packer").startup(function(use)
+	-- Packer can manage itself
+	use("wbthomason/packer.nvim")
+	-----------------------------------------------------------
+	-- ПЛАГИНЫ ВНЕШНЕГО ВИДА
+	-----------------------------------------------------------
+	use("Mofiqul/vscode.nvim")
 	--- Информационная строка внизу
 	use({
-		'nvim-lualine/lualine.nvim',
+		"nvim-lualine/lualine.nvim",
 		requires = {
-			'kyazdani42/nvim-web-devicons', opt = true
+			"kyazdani42/nvim-web-devicons",
+			opt = true,
 		},
-	})  
+	})
 	-- Табы вверху
-	use {'akinsho/bufferline.nvim', tag = "*", requires = 'nvim-tree/nvim-web-devicons'}
+	use({ "akinsho/bufferline.nvim", tag = "*", requires = "nvim-tree/nvim-web-devicons" })
 
------------------------------------------------------------
--- НАВИГАЦИЯ
------------------------------------------------------------
+	-----------------------------------------------------------
+	-- НАВИГАЦИЯ
+	-----------------------------------------------------------
 	-- Файловый менеджер
 	use({
 		"nvim-tree/nvim-tree.lua",
@@ -38,9 +39,9 @@ return require('packer').startup(function(use)
 	-- Fuzzy Finder Algorithm which requires local dependencies to be built. Only load if `make` is available
 	use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make", cond = vim.fn.executable("make") == 1 })
 
------------------------------------------------------------
--- LSP и автодополнялка
------------------------------------------------------------
+	-----------------------------------------------------------
+	-- LSP и автодополнялка
+	-----------------------------------------------------------
 	-- Highlight, edit, and navigate code using a fast incremental parsing library
 	use("nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" })
 	-- lsp stuffs
@@ -71,16 +72,22 @@ return require('packer').startup(function(use)
 		},
 	})
 
------------------------------------------------------------
--- Utilities
------------------------------------------------------------
-  use({
-    "kdheepak/lazygit.nvim",
-    -- optional for floating window border decoration
-    requires = {
-      "nvim-lua/plenary.nvim",
-    },
-  })
-  use("windwp/nvim-autopairs")
-
+	-----------------------------------------------------------
+	-- Utilities
+	-----------------------------------------------------------
+	use({
+		"kdheepak/lazygit.nvim",
+		-- optional for floating window border decoration
+		requires = {
+			"nvim-lua/plenary.nvim",
+		},
+	})
+	use("windwp/nvim-autopairs")
+	use({
+		"jose-elias-alvarez/null-ls.nvim",
+		requires = {
+			"MunifTanjim/eslint.nvim",
+			"MunifTanjim/prettier.nvim",
+		},
+	})
 end)
