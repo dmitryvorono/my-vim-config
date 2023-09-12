@@ -30,6 +30,7 @@ require("null-ls").setup({
 	end,
 })
 
+--[[
 local prettier = require("prettier")
 
 prettier.setup({
@@ -49,3 +50,4 @@ prettier.setup({
 		"svelte",
 	},
 })
+--]]
