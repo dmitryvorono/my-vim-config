@@ -4,6 +4,7 @@ require("config.lsp-zero")
 require("config.mason")
 require("config.autocompletion")
 require("config.lua-ls")
+require("config.format-before-save")
 require("keymaps")
 -----------------------------------------
 ---Color Schemes------------------------
