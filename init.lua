@@ -11,4 +11,4 @@ require("keymaps")
 ---Color Schemes------------------------
 ---------------------------------------
 vim.opt.termguicolors = true
-vim.cmd.colorscheme("tokyonight")
+--vim.cmd.colorscheme("tokyonight")
