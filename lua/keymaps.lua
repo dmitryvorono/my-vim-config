@@ -24,3 +24,17 @@ vim.keymap.set("v", "<leader>sw", '<esc><cmd>lua require("spectre").open_visual(
 vim.keymap.set("n", "<leader>sp", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
 	desc = "Search on current file",
 })
+
+-- jump and open float
+function JumpPrevAndOpenFloatDiagnostic()
+	vim.diagnostic.goto_prev()
+	vim.diagnostic.open_float(nil, { focus = false })
+end
+
+function JumpNextAndOpenFloatDiagnostic()
+	vim.diagnostic.goto_next()
+	vim.diagnostic.open_float(nil, { focus = false })
+end
+
+vim.keymap.set("n", "[d", JumpPrevAndOpenFloatDiagnostic, { desc = "Jump to prev diagnostic" })
+vim.keymap.set("n", "]d", JumpNextAndOpenFloatDiagnostic, { desc = "Jump to prev diagnostic" })
